@@ -1,9 +1,5 @@
 package uk.mondosports.plugins.woobi;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import android.app.Activity;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -32,7 +28,6 @@ public class WoobiPlugin extends CordovaPlugin implements
     private static final String ACTION_SHOW_OFFERWALL = "showOfferwall";
     private static final String ACTION_SHOW_REWARDEDVIDEO = "showRewardedVideo";
     private static final String OPT_APPLICATION_KEY = "appKey";
-    private static final String OPT_APPLICATION_SECRET = "secretKey";
     private static final String OPT_USER_ID = "userId";
 
     private String appKey = DEFAULT_APP_KEY;
@@ -90,7 +85,7 @@ public class WoobiPlugin extends CordovaPlugin implements
     }
 
     private void showOfferWall(JSONObject options) {
-        Woobi.showOffers((Activity)this.webView.getContext(), this.appKey, this.userId);
+        Woobi.showOffers(this.cordova.getActivity(), this.appKey, this.userId);
     }
     
     private PluginResult executeShowRewardedVideo(JSONObject options, CallbackContext callbackContext) {

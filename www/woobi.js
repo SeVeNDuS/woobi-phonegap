@@ -1,14 +1,14 @@
 function WoobiPlugin() {}
 
-SupersonicPlugin.prototype.initialize = function (appKey, userId, success, error) {
+WoobiPlugin.prototype.initialize = function (appKey, userId, success, error) {
 	cordova.exec(success, error, 'Woobi', 'initialize', [appKey, userId]);
 };
 
-SupersonicPlugin.prototype.showOfferwall = function (success, error) {
+WoobiPlugin.prototype.showOfferwall = function (success, error) {
 	cordova.exec(success, error, 'Woobi', 'showOfferwall', []);
 };
 
-SupersonicPlugin.prototype.showRewardedVideo = function (success, error) {
+WoobiPlugin.prototype.showRewardedVideo = function (success, error) {
 	cordova.exec(success, error, 'Woobi', 'showRewardedVideo', []);
 };
 
