@@ -18,7 +18,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class WoobiPlugin extends CordovaPlugin  {
+public class WoobiPlugin extends CordovaPlugin implements 
+    WoobiEventListener {
 
     private static final String LOGTAG = "WoobiPlugin";
     private static final String DEFAULT_APP_KEY = "32c9d67d";
@@ -35,10 +36,6 @@ public class WoobiPlugin extends CordovaPlugin  {
     private String secretKey = "5043b715c3bd823b760000ff";
     private String userId = "5043b715c3bd823b760000ff";
     private SSAPublisher ssaPub; 
-
-    private WoobiEventListener woobiEventlistener = new MyEventListener(this);
-    private WoobiCountListener woobiCountListener = new MyCountListener(this);
-    private WoobiGetPointsListener woobigetPointsListener = new MyGetPointsListener(this);
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -79,7 +76,7 @@ public class WoobiPlugin extends CordovaPlugin  {
 
         Woobi.staging = false;
         Woobi.verbose = VERBOSE;
-        Woobi.init(this, woobiEventlistener);
+        Woobi.init(this.webView.getContext(), this);
     }
 
     private PluginResult executeShowOfferwall(JSONObject options, CallbackContext callbackContext) {
@@ -93,7 +90,7 @@ public class WoobiPlugin extends CordovaPlugin  {
     }
 
     private void showOfferWall(JSONObject options) {
-        Woobi.showOffers(this, this.appKey, this.userId);
+        Woobi.showOffers(this.webView.getContext(), this.appKey, this.userId);
     }
     
     private PluginResult executeShowRewardedVideo(JSONObject options, CallbackContext callbackContext) {
@@ -108,5 +105,36 @@ public class WoobiPlugin extends CordovaPlugin  {
 
     private void showRewardedVideo() {
         ssaPub.showRewardedVideo();
+    }
+
+    @Override
+    public void onInitialized() {
+        Toast.makeText(this.webView.getContext(), "Initialized Woobi", Toast.LENGTH_SHORT).show();
+        
+    }
+    @Override
+    public void onError(WoobiError error) {
+        Toast.makeText(this.webView.getContext(), error.toString(), Toast.LENGTH_SHORT).show();
+        
+    }
+    @Override
+    public void onShowOffers() {
+        Toast.makeText(this.webView.getContext(), "onShowOffers", Toast.LENGTH_SHORT).show();
+        
+    }
+    @Override
+    public void onCloseOffers() {
+        Toast.makeText(this.webView.getContext(), "onCloseOffers", Toast.LENGTH_SHORT).show();
+        
+    }
+    @Override
+    public void onShowPopup() {
+        Toast.makeText(this.webView.getContext(), "onShowPopup", Toast.LENGTH_SHORT).show();
+        
+    }
+    @Override
+    public void onClosePopup() {
+        Toast.makeText(this.webView.getContext(), "onClosePopup", Toast.LENGTH_SHORT).show();
+        
     }
 }
