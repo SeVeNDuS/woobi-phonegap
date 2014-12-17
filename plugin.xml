@@ -29,13 +29,13 @@
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <activity android:name="com.woobi.view.OfferWallActivity" android:configchanges="orientation|screenSize" android:windowsoftinputmode="adjustPan"></activity>
-            <activity android:name="com.woobi.view.OfferDescriptionActivity" android:configchanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
-            <activity android:name="com.woobi.view.OfferActivity" android:configchanges="orientation|screenSize"></activity>
-            <activity android:name="com.woobi.view.OfferIncentiveAppDescrptionPopupActivity" android:configchanges="orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
-            <activity android:name="com.woobi.view.OfferNonIncentiveAppDescrptionPopupActivity" android:configchanges="orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
-            <activity android:name="com.woobi.view.SponsoredByDialogActivity" android:configchanges="orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
-            <activity android:name="com.woobi.view.OfferPopupActivity" android:configchanges="orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            <activity android:name="com.woobi.view.OfferWallActivity" android:configChanges="orientation|screenSize" android:windowSoftInputMode="adjustPan"></activity>
+            <activity android:name="com.woobi.view.OfferDescriptionActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            <activity android:name="com.woobi.view.OfferActivity" android:configChanges="orientation|screenSize"></activity>
+            <activity android:name="com.woobi.view.OfferIncentiveAppDescrptionPopupActivity" android:configChanges="orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            <activity android:name="com.woobi.view.OfferNonIncentiveAppDescrptionPopupActivity" android:configChanges="orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            <activity android:name="com.woobi.view.SponsoredByDialogActivity" android:configChanges="orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            <activity android:name="com.woobi.view.OfferPopupActivity" android:configChanges="orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
         </config-file>
 
         <source-file src="android/WoobiPlugin.java" target-dir="src/uk/mondosports/plugins/woobi" />

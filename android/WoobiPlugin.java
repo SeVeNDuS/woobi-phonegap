@@ -3,10 +3,13 @@ package uk.mondosports.plugins.woobi;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.app.Activity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.woobi.Woobi;
 import com.woobi.WoobiCountListener;
+import com.woobi.WoobiError;
 import com.woobi.WoobiEventListener;
 import com.woobi.WoobiGetPointsListener;
 
@@ -22,7 +25,7 @@ public class WoobiPlugin extends CordovaPlugin implements
     WoobiEventListener {
 
     private static final String LOGTAG = "WoobiPlugin";
-    private static final String DEFAULT_APP_KEY = "32c9d67d";
+    private static final String DEFAULT_APP_KEY = "5015";
     private static final boolean VERBOSE = true;
 
     private static final String ACTION_INITIALIZE = "initialize";
@@ -33,9 +36,7 @@ public class WoobiPlugin extends CordovaPlugin implements
     private static final String OPT_USER_ID = "userId";
 
     private String appKey = DEFAULT_APP_KEY;
-    private String secretKey = "5043b715c3bd823b760000ff";
     private String userId = "5043b715c3bd823b760000ff";
-    private SSAPublisher ssaPub; 
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
@@ -71,7 +72,6 @@ public class WoobiPlugin extends CordovaPlugin implements
         if(options == null) return;
         
         if(options.has(OPT_APPLICATION_KEY)) this.appKey = options.optString( OPT_APPLICATION_KEY );
-        if(options.has(OPT_APPLICATION_SECRET)) this.secretKey = options.optString( OPT_APPLICATION_SECRET );
         if(options.has(OPT_USER_ID)) this.userId = options.optString( OPT_USER_ID );
 
         Woobi.staging = false;
@@ -90,7 +90,7 @@ public class WoobiPlugin extends CordovaPlugin implements
     }
 
     private void showOfferWall(JSONObject options) {
-        Woobi.showOffers(this.webView.getContext(), this.appKey, this.userId);
+        Woobi.showOffers((Activity)this.webView.getContext(), this.appKey, this.userId);
     }
     
     private PluginResult executeShowRewardedVideo(JSONObject options, CallbackContext callbackContext) {
@@ -104,7 +104,7 @@ public class WoobiPlugin extends CordovaPlugin implements
     }
 
     private void showRewardedVideo() {
-        ssaPub.showRewardedVideo();
+        //ssaPub.showRewardedVideo();
     }
 
     @Override
