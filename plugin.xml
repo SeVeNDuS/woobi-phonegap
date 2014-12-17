@@ -1,0 +1,44 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+    <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="uk.mondosports.plugins.woobi" version="0.0.1">
+    <name>Woobi</name>
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+    <description>Woobi Ads Phonegap Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,woobi,tokenads,ads,offerwall</keywords>
+    <js-module src="www/woobi.js" name="Woobi">
+        <clobbers target="window.plugins.woobi" />
+    </js-module>
+
+    <dependency id="com.google.playservices" url="https://github.com/MobileChromeApps/google-play-services.git"/>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Woobi">
+                <param name="android-package" value="uk.mondosports.plugins.woobi.SupersonicPlugin"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET">
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE">
+            <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE">
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:name="com.woobi.view.OfferWallActivity" android:configchanges="orientation|screenSize" android:windowsoftinputmode="adjustPan"></activity>
+            <activity android:name="com.woobi.view.OfferDescriptionActivity" android:configchanges="keyboardHidden|orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            <activity android:name="com.woobi.view.OfferActivity" android:configchanges="orientation|screenSize"></activity>
+            <activity android:name="com.woobi.view.OfferIncentiveAppDescrptionPopupActivity" android:configchanges="orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            <activity android:name="com.woobi.view.OfferNonIncentiveAppDescrptionPopupActivity" android:configchanges="orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            <activity android:name="com.woobi.view.SponsoredByDialogActivity" android:configchanges="orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            <activity android:name="com.woobi.view.OfferPopupActivity" android:configchanges="orientation|screenSize" android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+        </config-file>
+
+        <source-file src="android/WoobiPlugin.java" target-dir="src/uk/mondosports/plugins/woobi" />
+        <source-file src="android/WoobiSDK_v1.3.1.jar" target-dir="libs/" />
+    </platform>
+</plugin>
